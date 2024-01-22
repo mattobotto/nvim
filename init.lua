@@ -330,6 +330,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Set up Mini.nvim plugins
 require("mini.cursorword").setup()
 require("mini.jump2d").setup()
+require("mini.files").setup()
+
+-- Mini.files keymaps
+vim.keymap.set("n", "<leader>t", "<cmd> lua MiniFiles.open() <CR>")
 
 -- Open Telescope on start
 vim.api.nvim_create_autocmd("VimEnter", {
