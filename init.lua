@@ -159,7 +159,6 @@ require("lazy").setup({
 		build = ":TSUpdate",
 		config = function()
 			local configs = require("nvim-treesitter.configs")
-
 			configs.setup({
 				ensure_installed = "all",
 				highlight = { enable = true },
@@ -225,6 +224,35 @@ require("lazy").setup({
 		opts = {
 			disable_filetype = { "TelescopePrompt", "vim" },
 		},
+	},
+
+	-- Tab out of bracket characters
+	{
+		"abecodes/tabout.nvim",
+		config = function()
+			require("tabout").setup({
+				tabkey = "<Tab>",
+				backwards_tabkey = "<S-Tab>",
+				act_as_tab = true,
+				act_as_shift_tab = false,
+				default_tab = "<C-t>",
+				default_shift_tab = "<C-d>",
+				enable_backwards = true,
+				completion = true,
+				tabouts = {
+					{ open = "'", close = "'" },
+					{ open = '"', close = '"' },
+					{ open = "`", close = "`" },
+					{ open = "(", close = ")" },
+					{ open = "[", close = "]" },
+					{ open = "{", close = "}" },
+				},
+				ignore_beginning = true,
+				exclude = {}, -- tabout will ignore these filetypes
+			})
+		end,
+		wants = { "nvim-treesitter" },
+		after = { "nvim-cmp" },
 	},
 
 	-- Gitsigns
@@ -307,7 +335,7 @@ require("lazy").setup({
 -- Set up colorscheme
 require("nightfox").setup({
 	options = {
-		transparent = false,
+		transparent = true,
 	},
 })
 vim.cmd("colorscheme nightfox")
