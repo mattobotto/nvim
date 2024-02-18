@@ -247,7 +247,7 @@ require("lazy").setup({
 					{ open = "[", close = "]" },
 					{ open = "{", close = "}" },
 				},
-				ignore_beginning = true,
+				ignore_beginning = false,
 				exclude = {}, -- tabout will ignore these filetypes
 			})
 		end,
